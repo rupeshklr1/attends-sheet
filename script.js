@@ -73,14 +73,14 @@
     button.innerHTML=" sort it "
     head1.innerText+="     "+current_date+"  ";
     head1.appendChild(button);
-    date1.innerText=current_date;
+    // date1.innerText=current_date;
     head2.innerHTML+="     "+current_date+"  ";
     var button1 = document.createElement("button");
     button1.innerHTML="      sort it "
     button1.setAttribute("id", "order2");
     button1.setAttribute("style", "display:none;");
     head2.appendChild(button1);
-    date2.innerHTML="    "+current_date+"    ";
+    // date2.innerHTML="    "+current_date+"    ";
     };
     setter();
     changeformate.onclick=function (){
@@ -327,7 +327,9 @@
       // btn btn-info link-success btn-lg
       // btn btn-info link-danger btn-lg
           var button = document.createElement("button");
-          button.setAttribute("class", "btn btn-success m-3 p-6  btn-lg");
+          button.setAttribute("class", "btn btn-success m-3 p-6  btn-lg mybtn");
+          // head1.innerText+=deli.length;
+          
           // btn.setAttribute("type", "button");
           // button.setAttribute("class", "roll1");
           button.setAttribute("id", "temp__"+deli[b]);
@@ -339,14 +341,17 @@
           button.innerHTML=str1+tenthpla + deli[b];
           present.appendChild(button);
           
+          head1.innerText= head1.innerText.slice(0,19)+"   "+deli.length;
+          head2.innerText= head2.innerText.slice(0,19)+"   "+feli.length;
           button.addEventListener("click", function(event) {
             var btn = event.target;
             var fff=btn.id;
+            // console.log(feli,li,li2,all_li,feli);
             if (fff.slice(0,6)=="temp__")
               {
                 // console.log(fff.slice(6));
                 fff=parseInt(fff.slice(6));
-                btn.setAttribute("class", "btn btn-danger m-3 p-6 btn-lg");
+                btn.setAttribute("class", "btn btn-danger m-3 p-6 btn-lg mybtn");
                 btn.setAttribute("type", "button");
                 btn.setAttribute("id",fff);
                 absent.appendChild(btn);
@@ -357,7 +362,7 @@
               }
             else{
                 btn.setAttribute("id","temp__"+fff);
-                btn.setAttribute("class", "btn btn-success m-3 p-6 btn-lg");
+                btn.setAttribute("class", "btn btn-success m-3 p-6 btn-lg mybtn");
                 btn.setAttribute("type", "button");
                 present.appendChild(btn);
                 fff=parseInt(fff)
@@ -365,6 +370,8 @@
                 deli.push(parseInt(fff));
                 deli.sort(function(a, b){return a-b});
             }
+            head1.innerText= head1.innerText.slice(0,19)+"   "+deli.length;
+            head2.innerText= head2.innerText.slice(0,19)+"   "+feli.length;
            fun3();
             });
         }
